@@ -8,6 +8,7 @@ This project used to leverage alexa skill to integrate with IDP provider to veri
 # High Level Design
 
 
+![](https://github.com/raamc21/alexa-ask-accountlinking/blob/main/Alexa-ASK.png)
 
 
 ## Reference Links
