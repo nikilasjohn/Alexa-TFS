@@ -1,5 +1,12 @@
-# alexa-ask-accountlinking
-This demp project is used to link test accounts with Forgerock
+# Summary
+
+This project used to leverage alexa skill to integrate with IDP provider to verify user account and get account details informations like
+ - Account Summary
+ - Payment History
+ - Payment Due
+
+# High Level Design
+
 
 
 
