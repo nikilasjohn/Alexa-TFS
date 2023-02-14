@@ -2,13 +2,21 @@
 
 This project used to leverage alexa skill to integrate with IDP provider to verify user account and get account details informations like
  - Account Summary
- - Payment History
+ - Payoff Quote
  - Payment Due
 
 # High Level Design
 
 
 ![](https://github.com/raamc21/alexa-ask-accountlinking/blob/main/Alexa-ASK.png)
+
+# Intents
+
+ ## GetAccessTokenIntent
+ ## NameIntent
+ ## AccountSummaryIntent
+ ## PayOffQuoteIntent
+ ## PaymentDueIntent
 
 
 ## Reference Links
