@@ -1,0 +1,75 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "t. f. s.",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "HelloWorldIntent",
+          "slots": [],
+          "samples": [
+            "hello",
+            "how are you",
+            "say hi world",
+            "say hi",
+            "hi",
+            "say hello world",
+            "say hello"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "PayOffIntent",
+          "slots": [],
+          "samples": [
+            "What\u0027s my payoff",
+            "What is my payoff balance"
+          ]
+        },
+        {
+          "name": "DueDateIntent",
+          "slots": [],
+          "samples": [
+            "What\u0027s my due date"
+          ]
+        },
+        {
+          "name": "PaymentAmountIntent",
+          "slots": [],
+          "samples": [
+            "How much is my due ",
+            "What is my payment amount"
+          ]
+        },
+        {
+          "name": "LastPaymentIntent",
+          "slots": [],
+          "samples": [
+            "When was my last payment",
+            "When is my last payment"
+          ]
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "6"
+}
