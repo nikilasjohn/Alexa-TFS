@@ -10,21 +10,21 @@
               }
         },
         "totalPaymentDueAmount" : {
-            "float": {
-                "min": 0.00,
-                "max": 1000.00
+            "int": {
+                "min": 0,
+                "max": 1000
               }
         },
         "currentPayoffAmount" : {
-            "float": {
-                "min": 0.00,
-                "max": 1000.00
+            "int": {
+                "min": 0,
+                "max": 1000
               }
         },
         "lastPaymentAmount" : {
-            "float": {
-                "min": 0.00,
-                "max": 1000.00
+            "int": {
+                "min": 0,
+                "max": 1000
               }
         }
     }
