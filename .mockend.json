@@ -1,93 +1,93 @@
 { 
-    "id":"63112faf6d82fe49f2130d81",
-    "financialAccountNumber":"020492PN836",
-    "status":"Open",
-    "region":"02",
-    "currentPaymentDueDay":0.0,
-    "closeOutDate":null,
-    "originalPayment":null,
-    "accountServicingCode":"1300I",
-    "interestUnpaidAmount":12.0,
-    "unpaidOtherCharges":17.0,
-    "miscellaneousFeesUnpaidAmount":11.0,
-    "currentCustomerRate":13.0,
-    "currentMaturityDate":null,
-    "totalPaymentDueAmount":815.26,
-    "currentPayoffAmount":15.0,
-    "currentPrincipalBalanceAmount":16.0,
-    "currentTerminationDate":null,
-    "currentRecoveryCode":null,
-    "currentSystemProcessDate":"2022-05-31",
-    "daysToMaturity":12,
-    "dealerSalesAndServiceOffice":"0492",
-    "encoreEligibleIndicator":false,
-    "extensionOrDeferredPaymentCount":17,
-    "interestBilledNotPaidAmount":19.0,
-    "interestPaidYearToDateAmount":1.0,
-    "lateChargeUnpaidAmount":50.0,
-    "loanNumber":null,
-    "numberOfDaysDelinquent":11,
-    "numberOfNonSufficientFundsOnAnAccount":11,
-    "originalFinancedAmount":11.0,
-    "perDiemAmount":11.0,
-    "oldestDelinquentInvoiceDueDate90PercentageRule":null,
-    "scheduledPaymentAmount":11.0,
-    "payoffQuoteGoodThroughDate":"2021-08-14",
-    "documentContext": { 
-        "documentCreationTime":"2022-06-2013:54:54"
-        },
-    "servicingAccount": { 
-        "payment":{ 
-            "lastPaymentAmount":11.0,
-            "nextPaymentDueAmount":11.0,
-            "numberOfPaymentsMade":11,
-            "numberOfPaymentsPastDue":11
-            },
-        "payoffQuote":{ 
-            "grossPayoffAmount":"11.0",
-            "productType":"LEASE",
-            "goodThroughDate":"2021-08-14",
-            "accountNumber":"020492PN836",
-            "effectiveDate":"2022-05-31"
+    "id": "63112faf6d82fe49f2130d81",
+    "financialAccountNumber": "020492PN836",
+    "status": "Open",
+    "region": "02",
+    "currentPaymentDueDay": 0.0,
+    "closeOutDate": null,
+    "originalPayment": null,
+    "accountServicingCode": "1300I", 
+    "interestUnpaidAmount": 12.0,
+    "unpaidOtherCharges": 17.0, 
+    "miscellaneousFeesUnpaidAmount": 11.0,
+    "currentCustomerRate": 13.0,
+    "currentMaturityDate": null,
+    "totalPaymentDueAmount": 815.26, 
+    "currentPayoffAmount": 15.0,
+    "currentPrincipalBalanceAmount": 16.0,
+    "currentTerminationDate": null,
+    "currentRecoveryCode": null, 
+    "currentSystemProcessDate": "2022-05-31", 
+    "daysToMaturity": 12, 
+    "dealerSalesAndServiceOffice": "0492", 
+    "encoreEligibleIndicator": false, 
+    "extensionOrDeferredPaymentCount": 17, 
+    "interestBilledNotPaidAmount": 19.0, 
+    "interestPaidYearToDateAmount": 1.0, 
+    "lateChargeUnpaidAmount": 50.0, 
+    "loanNumber": null, 
+    "numberOfDaysDelinquent": 11, 
+    "numberOfNonSufficientFundsOnAnAccount": 11, 
+    "originalFinancedAmount": 11.0, 
+    "perDiemAmount": 11.0, 
+    "oldestDelinquentInvoiceDueDate90PercentageRule": null, 
+    "scheduledPaymentAmount": 11.0, 
+    "payoffQuoteGoodThroughDate": "2021-08-14", 
+    "documentContext":  { 
+        "documentCreationTime": "2022-06-2013:54:54"
+        }, 
+    "servicingAccount":  { 
+        "payment": { 
+            "lastPaymentAmount": 11.0, 
+            "nextPaymentDueAmount": 11.0, 
+            "numberOfPaymentsMade": 11, 
+            "numberOfPaymentsPastDue": 11
+            }, 
+        "payoffQuote": { 
+            "grossPayoffAmount": "11.0", 
+            "productType": "LEASE", 
+            "goodThroughDate": "2021-08-14", 
+            "accountNumber": "020492PN836", 
+            "effectiveDate": "2022-05-31"
             }
-    },
-    "customer":{ 
-        "primaryBorrowerIndicator":true,
-        "promiseBrokenByCustomerCount":11,
-        "promiseKeptByCustomerCount":11,
-        "customerAddressList":[],
-        "customerElectronicAddress":[],
-        "customerPhones":[],
-        "customerPreferences":[],
-            "customerContract":{ 
-                "contractSignedDate":"2018-08-14",
-                "contractMaturityDate":"2021-08-14",
-                "contractualTermCount":36,
-                "vehicle":{ 
-                    "mileage":11.0
+    }, 
+    "customer": { 
+        "primaryBorrowerIndicator": true, 
+        "promiseBrokenByCustomerCount": 11, 
+        "promiseKeptByCustomerCount": 11, 
+        "customerAddressList": [], 
+        "customerElectronicAddress": [], 
+        "customerPhones": [], 
+        "customerPreferences": [], 
+            "customerContract": { 
+                "contractSignedDate": "2018-08-14", 
+                "contractMaturityDate": "2021-08-14", 
+                "contractualTermCount": 36, 
+                "vehicle": { 
+                    "mileage": 11.0
                     }
-            },
-            "listOfCoborrowers":[
+            }, 
+            "listOfCoborrowers": [
                 {
-                    "primaryBorrowerIndicator":false,
-                    "borrowerAddressList":[{}],
-                    "borrowerElectronicAddress":[
+                    "primaryBorrowerIndicator": false, 
+                    "borrowerAddressList": [{}], 
+                    "borrowerElectronicAddress": [
                         { 
-                            "emailInvalidFlag":false
+                            "emailInvalidFlag": false
                         }
-                    ],
-                    "borrowerPhones":[{}],
-                    "borrowerPreferences":[{}]
+                    ], 
+                    "borrowerPhones": [{}], 
+                    "borrowerPreferences": [{}]
                 }
-            ],
-            "dealer":{ 
-                "dealerSalesAndServiceOffice":"0492"
+            ], 
+            "dealer": { 
+                "dealerSalesAndServiceOffice": "0492"
             }
-    },
-    "chargeOff":null,
-    "transactions":null,
-    "mfinContext":{ 
-        "organizationID":"TFS",
-        "tenantId":"t001"
+    }, 
+    "chargeOff": null, 
+    "transactions": null, 
+    "mfinContext": { 
+        "organizationID": "TFS", 
+        "tenantId": "t001"
     }
 }
