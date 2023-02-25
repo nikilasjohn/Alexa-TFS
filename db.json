@@ -1,6 +1,9 @@
 { 
-    "closeOutDate": "2023-04-02",
-    "totalPaymentDueAmount": 815.26, 
-    "currentPayoffAmount": 15.0,
-    "lastPaymentAmount": 11.0
+    "posts": {
+        "id" : 1,
+        "closeOutDate": "2023-04-02",
+        "totalPaymentDueAmount": 815.26, 
+        "currentPayoffAmount": 15.0,
+        "lastPaymentAmount": 11.0
+    }
 }
