@@ -5,8 +5,8 @@
         },
         "closeOutDate" : {
             "dateTime": {
-                "min": "2010-01-01T00:00:00Z",
-                "max": "2020-12-31T23:59:59Z"
+                "min": "2010-01-01T",
+                "max": "2020-12-31T"
               }
         },
         "totalPaymentDueAmount" : {
