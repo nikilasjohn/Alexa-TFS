@@ -5,32 +5,47 @@
  * */
 const Alexa = require('ask-sdk-core');
 
+const getRemoteData = (url) => new Promise((resolve, reject) => {
+  const client = url.startsWith('https') ? require('https') : require('http');
+  const request = client.get(url, (response) => {
+    if (response.statusCode < 200 || response.statusCode > 299) {
+      reject(new Error(`Failed with status code: ${response.statusCode}`));
+    }
+    const body = [];
+    response.on('data', (chunk) => body.push(chunk));
+    response.on('end', () => resolve(body.join('')));
+  });
+  request.on('error', (err) => reject(err));
+});
+
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
-    handle(handlerInput) {
-        const speakOutput = 'Welcome to Toyota Financial Services Alexa skill, you can say when was my last payment or Help. Which would you like to try?';
-
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            .reprompt(speakOutput)
+    
+    async handle(handlerInput) {
+        
+        // This will get the accessToken from Forgerock
+        const aToken = handlerInput.requestEnvelope.context.System.user.accessToken;
+        
+        // Logs the accessToken response
+        console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~${aToken}`);
+        
+        if (!aToken || aToken === '') {
+          // If the access token is empty or undefined, return an error response
+          return handlerInput.responseBuilder
+            .speak('You need to link your TFS account and your Amazon account to use this skill.')
+            .withLinkAccountCard()
             .getResponse();
-    }
-};
-
-const HelloWorldIntentHandler = {
-    canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
-    },
-    handle(handlerInput) {
-        const speakOutput = 'Hello World!';
-
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
+        }
+        else {
+            const speakOutput = `Welcome to Toyota Financial Services Alexa skill, you can say when was my last payment or Help. Which would you like to try?`;
+    
+            return handlerInput.responseBuilder
+                .speak(speakOutput)
+                .reprompt(speakOutput)
+                .getResponse();
+        }
     }
 };
 
@@ -107,14 +122,25 @@ const PayOffIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'PayOffIntent';
     },
-    handle(handlerInput) {
-        const speakOutput = 'Hello I am inside Payoff Intent Handler!';
+    async handle(handlerInput) {
+    let speakOutput = 'This is the default message.';
+    
+    // Replace link with TFS API endpoint
+    await getRemoteData('https://my-json-server.typicode.com/nikilasjohn/Alexa-TFS/posts/1')
+      .then((response) => {
+        const data = JSON.parse(response);
+        speakOutput = `Your current payoff balance is ${data.currentPayoffAmount}.`;
+      })
+      .catch((err) => {
+        console.log(`ERROR: ${err.message}`);
+        // set an optional error message here
+        // outputSpeech = err.message;
+      });
 
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
-    }
+    return handlerInput.responseBuilder
+      .speak(speakOutput)
+      .getResponse();
+  },
 };
 
 const PaymentAmountIntentHandler = {
@@ -122,14 +148,26 @@ const PaymentAmountIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'PaymentAmountIntent';
     },
-    handle(handlerInput) {
-        const speakOutput = 'Hello I am inside Payment Amount Intent Handler!';
+    
+    async handle(handlerInput) {
+    let speakOutput = 'This is the default message.';
+    
+    // Replace link with TFS API endpoint
+    await getRemoteData('https://my-json-server.typicode.com/nikilasjohn/Alexa-TFS/posts/1')
+      .then((response) => {
+        const data = JSON.parse(response);
+        speakOutput = `Your current payment amount is ${data.totalPaymentDueAmount}.`;
+      })
+      .catch((err) => {
+        console.log(`ERROR: ${err.message}`);
+        // set an optional error message here
+        // outputSpeech = err.message;
+      });
 
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
-    }
+    return handlerInput.responseBuilder
+      .speak(speakOutput)
+      .getResponse();
+  },
 }; 
 
 const DueDateIntentHandler = {
@@ -137,37 +175,52 @@ const DueDateIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'DueDateIntent';
     },
-    handle(handlerInput) {
-        const speakOutput = 'Hello I am inside Due Date Intent Handler!';
+    async handle(handlerInput) {
+    let speakOutput = 'This is the default message.';
+    
+    // Replace link with TFS API endpoint
+    await getRemoteData('https://my-json-server.typicode.com/nikilasjohn/Alexa-TFS/posts/1')
+      .then((response) => {
+        const data = JSON.parse(response);
+        speakOutput = `Your due date for your current bill is ${data.closeOutDate}.`;
+      })
+      .catch((err) => {
+        console.log(`ERROR: ${err.message}`);
+        // set an optional error message here
+        // outputSpeech = err.message;
+      });
 
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
-    }
+    return handlerInput.responseBuilder
+      .speak(speakOutput)
+      .getResponse();
+  },
 }; 
+
 
 const LastPaymentIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LastPaymentIntent';
     },
-    handle(handlerInput) {
-        console.log("LastPaymentIntent was invoked");
-        const speakOutput = 'Hello I am inside Last Payment Intent Handler!';
+    async handle(handlerInput) {
+    let speakOutput = 'This is the default message.';
+    // Replace link with TFS API endpoint
+    await getRemoteData('https://my-json-server.typicode.com/nikilasjohn/Alexa-TFS/posts/1')
+      .then((response) => {
+        const data = JSON.parse(response);
+        speakOutput = `Your last payment amount was ${data.lastPaymentAmount}.`;
+      })
+      .catch((err) => {
+        console.log(`ERROR: ${err.message}`);
+        // set an optional error message here
+        // outputSpeech = err.message;
+      });
 
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
-    }
-}; 
-
-
-
-
-
-
+    return handlerInput.responseBuilder
+      .speak(speakOutput)
+      .getResponse();
+  },
+};
 
 /* *
  * The intent reflector is used for interaction model testing and debugging.
@@ -188,6 +241,7 @@ const IntentReflectorHandler = {
             .getResponse();
     }
 };
+
 /**
  * Generic error handling to capture any syntax or routing errors. If you receive an error
  * stating the request handler chain is not found, you have not implemented a handler for
@@ -218,7 +272,6 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        HelloWorldIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
