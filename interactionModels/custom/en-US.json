@@ -5,6 +5,7 @@
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
+          "confirmationRequired": true,
           "samples": []
         },
         {
@@ -13,6 +14,7 @@
         },
         {
           "name": "AMAZON.StopIntent",
+          "confirmationRequired": true,
           "samples": []
         },
         {
