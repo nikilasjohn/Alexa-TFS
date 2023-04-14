@@ -4,18 +4,31 @@
  * session persistence, api calls, and more.
  * */
 const Alexa = require('ask-sdk-core');
+const https = require('https');
+let aToken = null;
 
 const getRemoteData = (url) => new Promise((resolve, reject) => {
-  const client = url.startsWith('https') ? require('https') : require('http');
-  const request = client.get(url, (response) => {
-    if (response.statusCode < 200 || response.statusCode > 299) {
-      reject(new Error(`Failed with status code: ${response.statusCode}`));
+  const options = {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer token',
+      'Accept': '*/*'
     }
-    const body = [];
-    response.on('data', (chunk) => body.push(chunk));
-    response.on('end', () => resolve(body.join('')));
+  };
+
+  https.get(url, options, (response) => {
+    let data = '';
+
+    response.on('data', (chunk) => {
+      data += chunk;
+    });
+
+    response.on('end', () => {
+      resolve(JSON.parse(data));
+    });
+  }).on('error', (error) => {
+    reject(error);
   });
-  request.on('error', (err) => reject(err));
 });
 
 const LaunchRequestHandler = {
@@ -26,7 +39,7 @@ const LaunchRequestHandler = {
     async handle(handlerInput) {
         
         // This will get the accessToken from Forgerock
-        const aToken = handlerInput.requestEnvelope.context.System.user.accessToken;
+        aToken = handlerInput.requestEnvelope.context.System.user.accessToken;
         
         // Logs the accessToken response
         console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~${aToken}`);
@@ -126,10 +139,10 @@ const PayOffIntentHandler = {
     let speakOutput = 'This is the default message.';
     
     // Replace link with TFS API endpoint
-    await getRemoteData('https://my-json-server.typicode.com/nikilasjohn/Alexa-TFS/posts/1')
-      .then((response) => {
-        const data = JSON.parse(response);
-        speakOutput = `Your current payoff balance is ${data.currentPayoffAmount}.`;
+    await getRemoteData('https://anypoint.mulesoft.com/mocking/api/v1/links/28cfbdf9-717f-42f8-a9d6-283e66c9f6af/financial-account-lookup/account?accountNumber=123')
+      .then((data) => {
+          console.log(data);
+          speakOutput = `Your current payoff balance is ${data.currentPayoffAmount}.`;
       })
       .catch((err) => {
         console.log(`ERROR: ${err.message}`);
@@ -153,10 +166,9 @@ const PaymentAmountIntentHandler = {
     let speakOutput = 'This is the default message.';
     
     // Replace link with TFS API endpoint
-    await getRemoteData('https://my-json-server.typicode.com/nikilasjohn/Alexa-TFS/posts/1')
-      .then((response) => {
-        const data = JSON.parse(response);
-        speakOutput = `Your current payment amount is ${data.totalPaymentDueAmount}.`;
+    await getRemoteData('https://anypoint.mulesoft.com/mocking/api/v1/links/28cfbdf9-717f-42f8-a9d6-283e66c9f6af/financial-account-lookup/account?accountNumber=123')
+      .then((data) => {
+          speakOutput = `Your current payment amount is ${data.totalPaymentDueAmount}.`;
       })
       .catch((err) => {
         console.log(`ERROR: ${err.message}`);
@@ -179,10 +191,9 @@ const DueDateIntentHandler = {
     let speakOutput = 'This is the default message.';
     
     // Replace link with TFS API endpoint
-    await getRemoteData('https://my-json-server.typicode.com/nikilasjohn/Alexa-TFS/posts/1')
-      .then((response) => {
-        const data = JSON.parse(response);
-        speakOutput = `Your due date for your current bill is ${data.closeOutDate}.`;
+    await getRemoteData('https://anypoint.mulesoft.com/mocking/api/v1/links/28cfbdf9-717f-42f8-a9d6-283e66c9f6af/financial-account-lookup/account?accountNumber=123')
+      .then((data) => {
+          speakOutput = `Your due date for your current bill is ${data.closeOutDate}.`;
       })
       .catch((err) => {
         console.log(`ERROR: ${err.message}`);
@@ -205,10 +216,9 @@ const LastPaymentIntentHandler = {
     async handle(handlerInput) {
     let speakOutput = 'This is the default message.';
     // Replace link with TFS API endpoint
-    await getRemoteData('https://my-json-server.typicode.com/nikilasjohn/Alexa-TFS/posts/1')
-      .then((response) => {
-        const data = JSON.parse(response);
-        speakOutput = `Your last payment amount was ${data.lastPaymentAmount}.`;
+    await getRemoteData('https://anypoint.mulesoft.com/mocking/api/v1/links/28cfbdf9-717f-42f8-a9d6-283e66c9f6af/financial-account-lookup/account?accountNumber=123')
+      .then((data) => {
+          speakOutput = `Your last payment amount was ${data.lastPaymentAmount}.`;
       })
       .catch((err) => {
         console.log(`ERROR: ${err.message}`);

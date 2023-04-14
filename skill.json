@@ -27,6 +27,33 @@
       }
     },
     "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "containsAds": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "locales": {
+        "en-US": {
+          "privacyPolicyUrl": "https://www.termsfeed.com/live/0fa08328-2407-4b39-8ecb-31cd5e744e3e"
+        },
+        "en-CA": {
+          "privacyPolicyUrl": "https://www.termsfeed.com/live/0fa08328-2407-4b39-8ecb-31cd5e744e3e"
+        },
+        "en-IN": {
+          "privacyPolicyUrl": "https://www.termsfeed.com/live/0fa08328-2407-4b39-8ecb-31cd5e744e3e"
+        },
+        "en-AU": {
+          "privacyPolicyUrl": "https://www.termsfeed.com/live/0fa08328-2407-4b39-8ecb-31cd5e744e3e"
+        },
+        "en-GB": {
+          "privacyPolicyUrl": "https://www.termsfeed.com/live/0fa08328-2407-4b39-8ecb-31cd5e744e3e"
+        }
+      },
+      "shoppingKit": {
+        "isAmazonAssociatesOnAlexaEnabled": false,
+        "isShoppingActionsEnabled": false
+      },
+      "usesPersonalInfo": true
+    },
     "publishingInformation": {
       "automaticClonedLocale": {
         "locales": [
@@ -35,63 +62,70 @@
           }
         ]
       },
-      "distributionCountries": [],
-      "isAvailableWorldwide": true,
+      "automaticDistribution": {
+        "isActive": false
+      },
+      "category": "EDUCATION_AND_REFERENCE",
+      "distributionCountries": [
+        "US"
+      ],
+      "distributionMode": "PRIVATE",
+      "isAvailableWorldwide": false,
       "locales": {
         "en-US": {
-          "description": "Sample Full Description",
+          "description": "Testing TFS Alexa Application",
           "examplePhrases": [
-            "Alexa open hello world",
-            "hello",
-            "help"
+            "Alexa open t. f. s. api test",
+            "alexa open t. f. s.",
+            "alexa when is my bill due"
           ],
           "keywords": [],
           "name": "TFS API Test",
-          "summary": "Sample Short Description"
+          "summary": "Testing TFS Alexa Application"
         },
         "en-CA": {
-          "description": "Sample Full Description",
+          "description": "Testing TFS Alexa Application",
           "examplePhrases": [
-            "Alexa open hello world",
-            "hello",
-            "help"
+            "Alexa open t. f. s. api test",
+            "alexa open t. f. s.",
+            "alexa when is my bill due"
           ],
           "keywords": [],
           "name": "TFS API Test",
-          "summary": "Sample Short Description"
+          "summary": "Testing TFS Alexa Application"
         },
         "en-IN": {
-          "description": "Sample Full Description",
+          "description": "Testing TFS Alexa Application",
           "examplePhrases": [
-            "Alexa open hello world",
-            "hello",
-            "help"
+            "Alexa open t. f. s. api test",
+            "alexa open t. f. s.",
+            "alexa when is my bill due"
           ],
           "keywords": [],
           "name": "TFS API Test",
-          "summary": "Sample Short Description"
+          "summary": "Testing TFS Alexa Application"
         },
         "en-AU": {
-          "description": "Sample Full Description",
+          "description": "Testing TFS Alexa Application",
           "examplePhrases": [
-            "Alexa open hello world",
-            "hello",
-            "help"
+            "Alexa open t. f. s. api test",
+            "alexa open t. f. s.",
+            "alexa when is my bill due"
           ],
           "keywords": [],
           "name": "TFS API Test",
-          "summary": "Sample Short Description"
+          "summary": "Testing TFS Alexa Application"
         },
         "en-GB": {
-          "description": "Sample Full Description",
+          "description": "Testing TFS Alexa Application",
           "examplePhrases": [
-            "Alexa open hello world",
-            "hello",
-            "help"
+            "Alexa open t. f. s. api test",
+            "alexa open t. f. s.",
+            "alexa when is my bill due"
           ],
           "keywords": [],
           "name": "TFS API Test",
-          "summary": "Sample Short Description"
+          "summary": "Testing TFS Alexa Application"
         }
       },
       "testingInstructions": "Sample Testing Instructions."
