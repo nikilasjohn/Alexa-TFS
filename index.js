@@ -6,7 +6,12 @@
 const Alexa = require("ask-sdk-core");
 
 const https = require('https');
+const OktaJwtVerifier = require('@okta/jwt-verifier');
 let aToken = null;
+
+const oktaJwtVerifier = new OktaJwtVerifier({
+  issuer: 'https://dev-74602024.okta.com/oauth2/default' // issuer required
+});
 
 const getRemoteData = (url) => new Promise((resolve, reject) => {
   const options = {
@@ -39,26 +44,40 @@ const LaunchRequestHandler = {
     
     async handle(handlerInput) {
         
-        // This will get the accessToken from Forgerock
+        // This will get the accessToken from Okta
         aToken = handlerInput.requestEnvelope.context.System.user.accessToken;
         
         // Logs the accessToken response
         console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~${aToken}`);
-        
-        if (!aToken || aToken === '') {
-          // If the access token is empty or undefined, return an error response
-          return handlerInput.responseBuilder
-            .speak('You need to link your TFS account and your Amazon account to use this skill.')
-            .withLinkAccountCard()
-            .getResponse();
-        }
-        else {
-            const speakOutput = `Welcome to Toyota Financial Services Alexa skill, you can say when was my last payment or Help. Which would you like to try?`;
+
+        // Try/catch statement to check for valid token
+        try {
+          
+          // Waits for token validation
+          const jwt = await oktaJwtVerifier.verifyAccessToken(aToken, 'api://default');
+
+          // Logs that the token is valid
+          console.log('token is valid');
+
+          // Builds a response
+          const speakOutput = `Welcome to Toyota Financial Services Alexa skill, you can say when was my last payment or Help. Which would you like to try?`;
     
             return handlerInput.responseBuilder
                 .speak(speakOutput)
                 .reprompt(speakOutput)
                 .getResponse();
+        
+        // Catches an error if the token is not valid
+        } catch (err) {
+
+          // Logs that the token is invalid
+          console.log('token failed validation');
+            
+          // Builds a response
+          return handlerInput.responseBuilder
+              .speak('You need to link your TFS account and your Amazon account to use this skill.')
+              .withLinkAccountCard()
+              .getResponse();
         }
     }
 };
@@ -153,6 +172,7 @@ const PayOffIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speakOutput)
+      .reprompt(speakOutput)
       .getResponse();
   },
 };
@@ -179,6 +199,7 @@ const PaymentAmountIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speakOutput)
+      .reprompt(speakOutput)
       .getResponse();
   },
 }; 
@@ -194,7 +215,7 @@ const DueDateIntentHandler = {
     // Replace link with TFS API endpoint
     await getRemoteData('https://anypoint.mulesoft.com/mocking/api/v1/links/28cfbdf9-717f-42f8-a9d6-283e66c9f6af/financial-account-lookup/account?accountNumber=123')
       .then((data) => {
-          speakOutput = `Your due date for your current bill is ${data.closeOutDate}.`;
+          speakOutput = `Your due date for your current bill is ${data.servicingAccount.payment.nextScheduledPaymentDueDate}.`;
       })
       .catch((err) => {
         console.log(`ERROR: ${err.message}`);
@@ -204,6 +225,7 @@ const DueDateIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speakOutput)
+      .reprompt(speakOutput)
       .getResponse();
   },
 }; 
@@ -219,7 +241,7 @@ const LastPaymentIntentHandler = {
     // Replace link with TFS API endpoint
     await getRemoteData('https://anypoint.mulesoft.com/mocking/api/v1/links/28cfbdf9-717f-42f8-a9d6-283e66c9f6af/financial-account-lookup/account?accountNumber=123')
       .then((data) => {
-          speakOutput = `Your last payment amount was ${data.lastPaymentAmount}.`;
+          speakOutput = `Your last payment amount was ${data.servicingAccount.payment.lastPaymentReceivedDate}.`;
       })
       .catch((err) => {
         console.log(`ERROR: ${err.message}`);
@@ -229,6 +251,7 @@ const LastPaymentIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speakOutput)
+      .reprompt(speakOutput)
       .getResponse();
   },
 };

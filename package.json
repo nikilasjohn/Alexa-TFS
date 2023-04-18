@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/technotablet/alexa-course-custom-skill#readme",
   "dependencies": {
+    "@okta/jwt-verifier": "^3.0.1",
     "ask-sdk-core": "^2.11.0",
     "ask-sdk-model": "^1.37.0",
     "i18next": "^21.4.2",
