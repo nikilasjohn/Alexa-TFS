@@ -4,7 +4,6 @@
  * session persistence, api calls, and more.
  * */
 const Alexa = require("ask-sdk-core");
-
 const https = require('https');
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 let aToken = null;
@@ -104,10 +103,12 @@ const CancelAndStopIntentHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = 'Goodbye!';
+        const speakOutput = 'Are you sure you want to exit?';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
+            .reprompt(speakOutput)
+            .withShouldEndSession(false)
             .getResponse();
     }
 };

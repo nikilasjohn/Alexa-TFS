@@ -1,44 +1,111 @@
 {
   "interactionModel": {
-    "languageModel": {
-      "invocationName": "tfs api test",
-      "intents": [
-        {
-          "name": "AMAZON.CancelIntent",
-          "confirmationRequired": true,
-          "samples": []
-        },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.StopIntent",
-          "confirmationRequired": true,
-          "samples": []
-        },
-        {
-          "name": "TestAPIIntent",
-          "slots": [],
-          "samples": [
-            "test the TFS API",
-            "test TFS API",
-            "test API",
-            "test",
-            "test the API"
-          ]
-        },
-        {
-          "name": "AMAZON.NavigateHomeIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.FallbackIntent",
-          "samples": []
-        }
-      ],
-      "types": []
-    }
-  },
-  "version": "2"
+      "languageModel": {
+          "invocationName": "tfs api test",
+          "intents": [
+              {
+                  "name": "AMAZON.CancelIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.HelpIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.StopIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.NavigateHomeIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.FallbackIntent",
+                  "samples": []
+              },
+              {
+                  "name": "PayOffIntent",
+                  "slots": [],
+                  "samples": [
+                      "How much do I owe for my payoff",
+                      "What is my payoff balance"
+                  ]
+              },
+              {
+                  "name": "DueDateIntent",
+                  "slots": [],
+                  "samples": [
+                      "when is my bill due",
+                      "What is the last day I can pay my due",
+                      "When should I pay my due",
+                      "when is my payment due",
+                      "When is my due date",
+                      "What is my payment due date",
+                      "What's my due date"
+                  ]
+              },
+              {
+                  "name": "PaymentAmountIntent",
+                  "slots": [],
+                  "samples": [
+                      "What is my payment ",
+                      "how much do I owe for my next payment",
+                      "how much is my next payment",
+                      "How much is my payment amount",
+                      "How much is my due ",
+                      "What is my payment amount"
+                  ]
+              },
+              {
+                  "name": "LastPaymentIntent",
+                  "slots": [],
+                  "samples": [
+                      "What day was my last payment",
+                      "When did I last do a payment",
+                      "When did I last pay my bill",
+                      "When did I last pay my due",
+                      "When was my last payment",
+                      "When is my last payment"
+                  ]
+              },
+              {
+                  "name": "CancelAndStopIntent",
+                  "slots": [],
+                  "samples": [
+                      "end",
+                      "cancel session",
+                      "stop session",
+                      "end session",
+                      "cancel",
+                      "stop"
+                  ]
+              }
+          ],
+          "types": []
+      },
+      "dialog": {
+          "intents": [
+              {
+                  "name": "CancelAndStopIntent",
+                  "confirmationRequired": true,
+                  "prompts": {
+                      "confirmation": "Confirm.Intent.1062212699055"
+                  },
+                  "slots": []
+              }
+          ],
+          "delegationStrategy": "ALWAYS"
+      },
+      "prompts": [
+          {
+              "id": "Confirm.Intent.1062212699055",
+              "variations": [
+                  {
+                      "type": "PlainText",
+                      "value": "Are you sure you want to exit?"
+                  }
+              ]
+          }
+      ]
+  }
 }
