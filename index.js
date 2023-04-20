@@ -4,6 +4,7 @@
  * session persistence, api calls, and more.
  * */
 const Alexa = require("ask-sdk-core");
+
 const https = require('https');
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 let aToken = null;
@@ -103,12 +104,10 @@ const CancelAndStopIntentHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = 'Are you sure you want to exit?';
+        const speakOutput = 'Goodbye!';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt(speakOutput)
-            .withShouldEndSession(false)
             .getResponse();
     }
 };
@@ -242,7 +241,7 @@ const LastPaymentIntentHandler = {
     // Replace link with TFS API endpoint
     await getRemoteData('https://anypoint.mulesoft.com/mocking/api/v1/links/28cfbdf9-717f-42f8-a9d6-283e66c9f6af/financial-account-lookup/account?accountNumber=123')
       .then((data) => {
-          speakOutput = `Your last payment amount was ${data.servicingAccount.payment.lastPaymentReceivedDate}.`;
+          speakOutput = `Your last payment was on ${data.servicingAccount.payment.lastPaymentReceivedDate}.`;
       })
       .catch((err) => {
         console.log(`ERROR: ${err.message}`);
