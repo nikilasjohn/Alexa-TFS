@@ -256,6 +256,25 @@ const LastPaymentIntentHandler = {
   },
 };
 
+const MakeAPaymentHandler = {
+  canHandle(handlerInput){
+      return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+          && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MakeAPaymentIntent';
+  },
+  async handle(handlerInput){
+      let payment = Alexa.getSlotValue(handlerInput.requestEnvelope, "paymentAmount");
+      let speakOutput = 'This is the default message.';
+
+
+
+      let speechOutput = "Your payment of " + payment + " dollars has been received. Thank you for using this Alexa skill"
+      return handlerInput.responseBuilder
+          .speak(speechOutput)
+         // .speak(speakOutput)
+          .getResponse();
+  },
+};
+
 /* *
  * The intent reflector is used for interaction model testing and debugging.
  * It will simply repeat the intent the user said. You can create custom handlers for your intents 
@@ -309,6 +328,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     PaymentAmountIntentHandler,
     DueDateIntentHandler,
     LastPaymentIntentHandler,
+    MakeAPaymentHandler,
     IntentReflectorHandler
   )
   .addErrorHandlers(
