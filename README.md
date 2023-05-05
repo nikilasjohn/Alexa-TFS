@@ -74,7 +74,9 @@ To run this program, it requires a basic Alexa Skill, follow these steps below t
 8. Review your selections, and then create your skill
 
 The first screen you are greeted with is the Alexa Skill Development Console. Here you will go to the 'Interaction Model' tab on the left and select 'JSON editor'.
-Once you are at this screen, drag and drop the
+Once you are at this screen, drag and drop [this file](interactionModels/custom/en-US.json). This builds the voice interaction models for this skill
+
+
 
 ## Reference
 https://awskarthik82.medium.com/account-linking-amazon-alexa-and-forgerock-openam-using-oauth2-authorization-grant-17a54730abc5
