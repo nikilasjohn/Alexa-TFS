@@ -6,7 +6,7 @@
   * [DueDateIntent](#duedateintent)
   * [PaymentAmountIntent](#PaymentAmountIntent)
   * [LastPaymentIntent](#LastPaymentIntent)
-  * [payoffquoteintent](#payoffintent)
+  * [PayOffIntent](#PayOffIntent)
   * [MakeAPaymentIntent](#MakeAPaymentIntent)
 - [Execution](#Execution)
 - [Reference](#reference)
