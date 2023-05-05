@@ -109,10 +109,12 @@ Next, set up your Okta account linking with Alexa, and to do this, please follow
 3. Enter 'Your Web Authorization URI', 'Access Token URI', 'Your Client ID', and 'Your Secret'
 4. Click 'Save' at the top
 
-
-
-
-Finally, we can test the application, go to the 'Test' tab 
+Finally, we can test the application:
+1. Go to the 'Test' tab
+2. On 'Skill testing is enabled in:', change this to 'Development'
+3. In the Alexa Simulator box, type "open toyota financial services test"
+4. If the response was "You need to link your TFS account and your Amazon account to use this skill.", this is expected and the setup is complete
 
 ## Reference
-https://awskarthik82.medium.com/account-linking-amazon-alexa-and-forgerock-openam-using-oauth2-authorization-grant-17a54730abc5
+https://developer.okta.com/blog/2019/03/20/linking-your-alexa-skils-securely
+
