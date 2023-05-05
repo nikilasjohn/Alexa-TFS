@@ -18,7 +18,7 @@ This project used to leverage Alexa skill to integrate with IDP provider to veri
  - Payoff Quote
  - Payment Due Date
 
-This was completed by Nikilas John, Femie Arasu, Tisha Arora, Anurag Diwate, Nihal Gopalam, & Andrew Mendoza in collaboration with Toyota Financial Services and UTD
+This was completed by [Nikilas John](https://www.linkedin.com/in/nikilas-john/), Femie Arasu, Tisha Arora, Anurag Diwate, Nihal Gopalam, & Andrew Mendoza in collaboration with Toyota Financial Services and UTD
 
 ## HighLevelDesign
 
