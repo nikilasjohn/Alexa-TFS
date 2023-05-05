@@ -24,7 +24,7 @@ This was completed by [Nikilas John](https://www.linkedin.com/in/nikilas-john/),
 
 ![](https://github.com/raamc21/alexa-ask-accountlinking/blob/main/Alexa-ASK.png)
 
-This image is still accurate, but in the process of development, we replaced OpenAM with Okta
+***This image is still accurate, but in the process of development, we replaced OpenAM with Okta
 
 ## Intents
 
