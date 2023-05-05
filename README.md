@@ -117,6 +117,6 @@ Finally, we can test the application:
 3. In the Alexa Simulator box, type "open toyota financial services test"
 4. If the response was "You need to link your TFS account and your Amazon account to use this skill.", this is expected and the setup is complete
 
-## Reference
+## Reference(s)
 https://developer.okta.com/blog/2019/03/20/linking-your-alexa-skils-securely
 
