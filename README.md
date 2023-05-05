@@ -73,8 +73,17 @@ To run this program, it requires a basic Alexa Skill, follow these steps below t
 7. On the Templates page, select 'Start from Scratch'
 8. Review your selections, and then create your skill
 
-The first screen you are greeted with is the Alexa Skill Development Console. Here you will go to the 'Interaction Model' tab on the left and select 'JSON editor'.
-Once you are at this screen, drag and drop [this file](interactionModels/custom/en-US.json). Click 'Save Model' and then 'Build Model'.
+The first screen you are greeted with is the Alexa Skill Development Console. Here we will set up the Interaction Model, to do this, follow these steps:
+1. Go to the 'Interaction Model' tab on the left 
+2. Select 'JSON editor'.
+3. Drag and drop [this file](interactionModels/custom/en-US.json). 
+4. Click 'Save Model' and then 'Build Model'.
+
+While we are here, we are going to change our Skill invocation name:
+1. Go to 'Invocations' on the left
+2. Select 'Skill Invocation Name'
+3. Replace your skill invocation name with something unique (For example, our team used 'toyota financial services test')
+4. Click 'Save Model' and then 'Build Model'.
 
 The next step is to create the Lambda function and link it to our Alexa skill.
 1. Log into Lambda with your AWS account
@@ -92,7 +101,18 @@ The next step is to create the Lambda function and link it to our Alexa skill.
 13. Click 'Save endpoints' at the top
 
 After this, we now have to add our code to Lambda, so go to the overview screen of our Lambda function
-1. In the 'Code' tab at the bottom, click 'Upload from' on the right and upload the ['lambdaZIP'](
+1. In the 'Code' tab at the bottom, click 'Upload from' on the right and upload the ['lambdaZIP'](lambdaZIP.zip) file
+
+Next, set up your Okta account linking with Alexa, and to do this, please follow these instructions:
+1. On the 'Build' tab of the Alexa Development Console, click the 'Account linking' tab at the bottom left
+2. Enable the 'Do you allow users to create an account or link to an existing account with you?' option at the top
+3. Enter 'Your Web Authorization URI', 'Access Token URI', 'Your Client ID', and 'Your Secret'
+4. Click 'Save' at the top
+
+
+
+
+Finally, we can test the application, go to the 'Test' tab 
 
 ## Reference
 https://awskarthik82.medium.com/account-linking-amazon-alexa-and-forgerock-openam-using-oauth2-authorization-grant-17a54730abc5
