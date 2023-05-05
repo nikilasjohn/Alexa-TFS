@@ -60,11 +60,21 @@ This intent used to provide payoff quote information about the user account
 This intent used to ask the user how much they would like to pay on their bill and process it
 ``
 
-## Summary
+## Execution
 
-To run this program, it requires an Alexa Skill with the code endpoint being hosted on AWS Lambda
+To run this program, it requires a basic Alexa Skill, follow these steps below to set one up:
 
 1. Go to https://developer.amazon.com/alexa/console/ask and sign in
+2. Click the 'Create Skill' icon
+3. Name your skill
+4. In 'Choose a type of experience', select 'Other'
+5. In 'Choose a model', select 'Custom'
+6. In 'Hosting services', select 'Provision your own'
+7. On the Templates page, select 'Start from Scratch'
+8. Review your selections, and then create your skill
+
+The first screen you are greeted with is the Alexa Skill Development Console. Here you will go to the 'Interaction Model' tab on the left and select 'JSON editor'.
+Once you are at this screen, drag and drop the
 
 ## Reference
 https://awskarthik82.medium.com/account-linking-amazon-alexa-and-forgerock-openam-using-oauth2-authorization-grant-17a54730abc5
