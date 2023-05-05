@@ -13,11 +13,13 @@
 
 ## Summary
 
-This project used to leverage alexa skill to integrate with IDP provider to verify user account and get account details informations like
+This project used to leverage Alexa skill to integrate with IDP provider to verify user account and get account details informations like
  - Payment Amount
  - Payoff Quote
  - Payment Due Date
- 
+
+This was completed by Nikilas John, Femie Arasu, Tisha Arora, Anurag Diwate, Nihal Gopalam, & Andrew Mendoza in collaboration with Toyota Financial Services and UTD
+
 ## HighLevelDesign
 
 ![](https://github.com/raamc21/alexa-ask-accountlinking/blob/main/Alexa-ASK.png)
